@@ -1,30 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import Postlist from './components/Postlist';
+import PostDetail from './components/PostDetail';
 
 export default function App() {
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    fetch(import.meta.env.VITE_API+'/users')
-      .then(res => res.json())
-      .then(result => {
-        setUsers(result);
-        console.log(result);
-      });
-  }, []);
-
   return (
     <div className="container mx-auto">
-      <Navbar/>
-      <Hero/>
-      {users.map(user => (
-        <div className='' key={user.id}>
-          <h2>{user.id}</h2>
-          <p>{user.name}</p>
-          <p>{user.email}</p>
-        </div>
-      ))}
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={
+            <>
+          <Hero />
+          <Postlist /> 
+          </>
+          } />
+          <Route path="/posts/:id" element={<PostDetail />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
