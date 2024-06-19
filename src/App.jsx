@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
 
 export default function App() {
   const [users, setUsers] = useState([]);
@@ -13,9 +15,11 @@ export default function App() {
   }, []);
 
   return (
-    <div>
+    <div className="container mx-auto">
+      <Navbar/>
+      <Hero/>
       {users.map(user => (
-        <div key={user.id}>
+        <div className='' key={user.id}>
           <h2>{user.id}</h2>
           <p>{user.name}</p>
           <p>{user.email}</p>
