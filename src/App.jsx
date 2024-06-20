@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Postlist from './components/Postlist';
 import PostDetail from './components/PostDetail';
+import Addposts from './components/Addposts';
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
           </>
           } />
           <Route path="/posts/:id" element={<PostDetail />} />
+          <Route path="/addposts" element={<Addposts />} />
         </Routes>
       </Router>
     </div>

@@ -23,7 +23,7 @@ export default function PostDetail() {
   return (
     <div>
       <h1>{post.title}</h1>
-      <img src={`http://localhost:3000/images/${post.image}`} alt={`${post.title} image`} />
+      <img src={`${post.image}`}  alt={`${post.title} image`} />
       <p>{post.content}</p>
       <p><strong>Author:</strong> {post.author}</p>
       <p><strong>Created at:</strong> {new Date(post.created_at).toLocaleDateString()}</p>
