@@ -22,10 +22,10 @@ export default function Postlist() {
           <thead>
             <tr>
               <th></th>
-              <th className='text-lg font-normal text-black'>เรื่อง</th>
-              <th className='text-lg font-normal text-black'>ผู้สร้าง</th>
-              <th className='text-lg font-normal text-black'>วันที่อัพเดต</th>
-              <th className='text-lg font-normal text-black'>ประเภท</th>
+              <th>เรื่อง</th>
+              <th>ผู้สร้าง</th>
+              <th>วันที่อัพเดต</th>
+              <th>ประเภท</th>
             </tr>
           </thead>
           <tbody>
@@ -40,7 +40,7 @@ export default function Postlist() {
                     </div>
                   </div>
                 </td>
-                <td className='text-lg font-medium'>
+                <td>
                   {post.title}
                 </td>
                 <td>{post.author}</td>
