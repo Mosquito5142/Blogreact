@@ -3,8 +3,6 @@ import { useParams } from 'react-router-dom';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.bubble.css'
 
-
-
 export default function PostDetail() {
   const { id } = useParams();
   const [post, setPost] = useState(null);
@@ -31,7 +29,11 @@ export default function PostDetail() {
   }, [id]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <span className="loading loading-spinner loading-lg text-6xl"></span>
+      </div>
+    );
   }
 
   if (error) {
@@ -43,16 +45,19 @@ export default function PostDetail() {
   }
 
   return (
-    <div>
-      <h1>{post.title}</h1>
-      {post.image && <img src={post.image} alt={`${post.title} image`} />}
+    <div className='py-3'>
+      <h1 className='text-3xl py-7 font-bold'>{post.title}</h1>
+      {post.image && 
+        <div className="flex justify-center mb-4 h-60">
+          <img src={post.image} alt={`${post.title} image`} className="max-w-full h-auto" />
+        </div>
+      }
       <ReactQuill value={post.content} readOnly={true} theme={"bubble"} />
-      <p><strong>Author:</strong> {post.author}</p>
-      <p><strong>Created at:</strong> {new Date(post.created_at).toLocaleDateString()}</p>
-      <p><strong>Updated at:</strong> {new Date(post.updated_at).toLocaleDateString()}</p>
-      <p><strong>Category:</strong> {post.category}</p>
-      <p><strong>Status:</strong> {post.status}</p>
-      <p><strong>Tags:</strong> {post.tags}</p>
+      <p><strong>ผู้เขียน : </strong> {post.author}</p>
+      <p><strong>วันที่เขียน : </strong> {new Date(post.created_at).toLocaleDateString()}</p>
+      <p><strong>วันที่แก้ไข : </strong> {new Date(post.updated_at).toLocaleDateString()}</p>
+      <p><strong>ประเภท : </strong> {post.category}</p>
+      <p><strong>แท็ก : </strong> {post.tags}</p>
       <br/>
     </div>
   );

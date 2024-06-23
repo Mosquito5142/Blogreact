@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Hero() {
   return (
-    <div className="hero min-h-screen bg-base-200">
+    <div className="hero min-h-5 bg-base-200">
   <div className="hero-content flex-col lg:flex-row">
     <img src="วชิรวิทย์ ดวงดี.jpg" className="max-w-sm rounded-lg shadow-2xl" />
     <div>

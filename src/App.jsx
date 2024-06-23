@@ -8,26 +8,31 @@ import Addposts from './components/Addposts';
 import Test from './components/Test';
 import AddEditPost from './components/admin/AddEditPost';
 import PostList from './components/admin/PostList';
+import Footer from './components/Footer';
 
 export default function App() {
   return (
-    <div className="container mx-auto">
-      <Router>
-        <Navbar />
+    <Router>
+      <Navbar />
+      <div className="container mx-auto">
         <Routes>
-          <Route path="/" element={
-            <>
-          <Hero />
-          <Postlist /> 
-          </>
-          } />
+          <Route 
+            path="/" 
+            element={
+              <>
+                <Hero />
+                <Postlist /> 
+              </>
+            } 
+          />
           <Route path="/posts/:id" element={<PostDetail />} />
           <Route path="/addposts" element={<Addposts />} />
           <Route path="/test" element={<Test />} />
           <Route path="/editpost" element={<PostList />} />
           <Route path="/editpost/:id" element={<AddEditPost />} />
         </Routes>
-      </Router>
-    </div>
+      </div>
+      <Footer />
+    </Router>
   );
 }
