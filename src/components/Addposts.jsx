@@ -1,6 +1,10 @@
-import React, { useState } from "react";
-import ReactQuill from "react-quill";
+import React, { useState, useRef } from "react";
+import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import ImageResize from "quill-image-resize";
+
+// Register ImageResize module
+Quill.register("modules/imageResize", ImageResize);
 
 const AddPost = () => {
   const [formData, setFormData] = useState({
@@ -45,22 +49,22 @@ const AddPost = () => {
       [{ align: [] }],
       ["clean"],
     ],
+    imageResize: {
+      modules: ["Resize", "DisplaySize", "Toolbar"],
+    },
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch(
-        import.meta.env.VITE_API + "/posts/addposts",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await fetch(import.meta.env.VITE_API + "/posts/addposts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
       if (!response.ok) {
         throw new Error("Network response was not ok " + response.statusText);
@@ -96,9 +100,9 @@ const AddPost = () => {
           </label>
         </div>
         <div>
-        <div className="label">
-              <span className="label-text font-semibold">เนื้อหา</span>
-            </div>
+          <div className="label">
+            <span className="label-text font-semibold">เนื้อหา</span>
+          </div>
           <ReactQuill
             value={formData.content}
             onChange={handleContentChange}
@@ -106,19 +110,19 @@ const AddPost = () => {
           />
         </div>
         <label className="form-control w-full max-w-xs">
-            <div className="label">
-              <span className="label-text font-semibold">ผู้เขียน</span>
-            </div>
-            <input
-              type="text"
-              placeholder="ผู้เขียน"
-              className="input input-bordered w-full max-w-xs py-1"
-              name="author"
-              value={formData.author}
-              onChange={handleInputChange}
-              required
-            />
-          </label>
+          <div className="label">
+            <span className="label-text font-semibold">ผู้เขียน</span>
+          </div>
+          <input
+            type="text"
+            placeholder="ผู้เขียน"
+            className="input input-bordered w-full max-w-xs py-1"
+            name="author"
+            value={formData.author}
+            onChange={handleInputChange}
+            required
+          />
+        </label>
         <div className="py-1">
           <label className="form-control w-full max-w-xs">
             <div className="label">
@@ -154,48 +158,50 @@ const AddPost = () => {
             <div className="label">
               <span className="label-text font-semibold">ประเภท</span>
             </div>
-          <input
-            type="text"
-            name="category"
-            placeholder="ประเภท"
-            className="input input-bordered w-full max-w-xs"
-            value={formData.category}
-            onChange={handleInputChange}
-            required
-          />
-          </label>
-        </div>
-        <div className="py-1"> 
-        <label className="form-control w-full max-w-xs">
-            <div className="label">
-              <span className="label-text font-semibold">แท็ก</span>
-            </div>
-          <input
-            type="text"
-            name="tags"
-            placeholder="แท็ก"
-            className="input input-bordered w-full max-w-xs"
-            value={formData.tags}
-            onChange={handleInputChange}
-          />
+            <input
+              type="text"
+              name="category"
+              placeholder="ประเภท"
+              className="input input-bordered w-full max-w-xs"
+              value={formData.category}
+              onChange={handleInputChange}
+              required
+            />
           </label>
         </div>
         <div className="py-1">
-        <label className="form-control w-full max-w-xs">
+          <label className="form-control w-full max-w-xs">
+            <div className="label">
+              <span className="label-text font-semibold">แท็ก</span>
+            </div>
+            <input
+              type="text"
+              name="tags"
+              placeholder="แท็ก"
+              className="input input-bordered w-full max-w-xs"
+              value={formData.tags}
+              onChange={handleInputChange}
+            />
+          </label>
+        </div>
+        <div className="py-1">
+          <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text font-semibold">รูปปก</span>
             </div>
-          <input
-            type="text"
-            name="image"
-             placeholder="ลิงค์รูปภาพ"
-            className="input input-bordered w-full max-w-xs"
-            value={formData.image}
-            onChange={handleInputChange}
-          />
+            <input
+              type="text"
+              name="image"
+              placeholder="ลิงค์รูปภาพ"
+              className="input input-bordered w-full max-w-xs"
+              value={formData.image}
+              onChange={handleInputChange}
+            />
           </label>
         </div>
-        <button type="submit" className="btn btn-primary">Add Post</button>
+        <button type="submit" className="btn btn-primary">
+          Add Post
+        </button>
       </form>
     </div>
   );

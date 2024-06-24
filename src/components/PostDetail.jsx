@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.bubble.css'
 
+
 export default function PostDetail() {
   const { id } = useParams();
   const [post, setPost] = useState(null);
