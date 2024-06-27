@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Postlist from './components/Postlist';
@@ -9,11 +9,15 @@ import Test from './components/Test';
 import AddEditPost from './components/admin/AddEditPost';
 import PostList from './components/admin/PostList';
 import Footer from './components/Footer';
+import SearchResults from "./components/SearchResults";
 
 export default function App() {
+  const [results, setResults] = useState([]);
+
   return (
     <Router>
-      <Navbar />
+      <Navbar setResults={setResults} />
+      <SearchResults results={results} />
       <div className="container mx-auto">
         <Routes>
           <Route 
