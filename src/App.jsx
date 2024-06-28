@@ -13,11 +13,12 @@ import SearchResults from "./components/SearchResults";
 
 export default function App() {
   const [results, setResults] = useState([]);
+  const [input, setInput] = useState(""); // เปลี่ยน input เป็น string
 
   return (
     <Router>
-      <Navbar setResults={setResults} />
-      <SearchResults results={results} />
+      <Navbar setResults={setResults} setInput={setInput} />
+      {input && <SearchResults results={results} input={input} />} {/* ซ่อน SearchResults เมื่อไม่มี input */}
       <div className="container mx-auto">
         <Routes>
           <Route 

@@ -16,40 +16,38 @@ export default function Postlist() {
   }, []);
 
   return (
-    <div>
-      <div className="overflow-x-auto">
-        <table className="table">
+    <div className="overflow-x-auto">
+      <div className="w-full overflow-hidden rounded-lg shadow-md">
+        <table className="w-full table-auto">
           <thead>
-            <tr>
-              <th></th>
-              <th className="text-lg">เรื่อง</th>
-              <th className="text-lg">ผู้สร้าง</th>
-              <th className="text-lg">วันที่อัพเดต</th>
-              <th className="text-lg">ประเภท</th>
+            <tr className="bg-gray-800 text-white">
+              <th className="px-4 py-2 sm:px-6 sm:py-3">รูปภาพ</th>
+              <th className="px-4 py-2 sm:px-6 sm:py-3">เรื่อง</th>
+              <th className="px-4 py-2 sm:px-6 sm:py-3">ผู้สร้าง</th>
+              <th className="px-4 py-2 sm:px-6 sm:py-3">วันที่อัพเดต</th>
+              <th className="px-4 py-2 sm:px-6 sm:py-3">ประเภท</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="divide-y divide-gray-200">
             {posts.map(post => (
-              <tr key={post.id}>
-                <td>
+              <tr key={post.id} className="transition-colors duration-200">
+                <td className="px-4 py-2 sm:px-6 sm:py-3">
                   <Link to={`/posts/${post.id}`} className="block">
-                    <div className="flex items-center gap-3">
-                      <div className="avatar">
-                        <div className="mask mask-squircle w-28">
-                          <img src={`${post.image}`} alt={`${post.title} image`} />
-                        </div>
+                    <div className="flex items-center">
+                      <div className="w-12 h-12 overflow-hidden rounded-full">
+                        <img src={`${post.image}`} alt={`${post.title} image`} className="object-cover w-full h-full" />
                       </div>
                     </div>
                   </Link>
                 </td>
-                <td className="text-lg font-medium">
+                <td className="px-4 py-2 sm:px-6 sm:py-3 text-lg font-medium">
                   <Link to={`/posts/${post.id}`} className="block">
                     {post.title}
                   </Link>
                 </td>
-                <td>{post.author}</td>
-                <td>{new Date(post.updated_at).toLocaleDateString()}</td>
-                <td>{post.category}</td>
+                <td className="px-4 py-2 sm:px-6 sm:py-3">{post.author}</td>
+                <td className="px-4 py-2 sm:px-6 sm:py-3">{new Date(post.updated_at).toLocaleDateString()}</td>
+                <td className="px-4 py-2 sm:px-6 sm:py-3">{post.category}</td>
               </tr>
             ))}
           </tbody>
