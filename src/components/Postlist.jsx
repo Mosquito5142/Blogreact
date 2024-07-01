@@ -20,7 +20,7 @@ export default function Postlist() {
       <div className="w-full overflow-hidden rounded-lg shadow-md">
         <table className="w-full table-auto">
           <thead>
-            <tr className="bg-gray-800 text-white">
+            <tr >
               <th className="px-4 py-2 sm:px-6 sm:py-3">รูปภาพ</th>
               <th className="px-4 py-2 sm:px-6 sm:py-3">เรื่อง</th>
               <th className="px-4 py-2 sm:px-6 sm:py-3">ผู้สร้าง</th>

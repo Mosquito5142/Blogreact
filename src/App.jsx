@@ -4,12 +4,12 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Postlist from './components/Postlist';
 import PostDetail from './components/PostDetail';
-import Addposts from './components/Addposts';
-import Test from './components/Test';
-import AddEditPost from './components/admin/AddEditPost';
-import PostList from './components/admin/PostList';
+import Addposts from './components/admin/Addposts';
 import Footer from './components/Footer';
 import SearchResults from "./components/SearchResults";
+// Admin
+import AdminpostList from "./components/admin/AdminpostList"
+import EditPost from './components/admin/EditPost';
 
 export default function App() {
   const [results, setResults] = useState([]);
@@ -32,9 +32,8 @@ export default function App() {
           />
           <Route path="/posts/:id" element={<PostDetail />} />
           <Route path="/addposts" element={<Addposts />} />
-          <Route path="/test" element={<Test />} />
-          <Route path="/editpost" element={<PostList />} />
-          <Route path="/editpost/:id" element={<AddEditPost />} />
+          <Route path="/admin" element={<AdminpostList />}/>
+          <Route path="/editpost/:id" element={<EditPost />} />
         </Routes>
       </div>
       <Footer />
