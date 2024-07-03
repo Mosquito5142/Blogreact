@@ -16,42 +16,23 @@ export default function Postlist() {
   }, []);
 
   return (
-    <div className="overflow-x-auto">
-      <div className="w-full overflow-hidden rounded-lg shadow-md">
-        <table className="w-full table-auto">
-          <thead>
-            <tr >
-              <th className="px-4 py-2 sm:px-6 sm:py-3">รูปภาพ</th>
-              <th className="px-4 py-2 sm:px-6 sm:py-3">เรื่อง</th>
-              <th className="px-4 py-2 sm:px-6 sm:py-3">ผู้สร้าง</th>
-              <th className="px-4 py-2 sm:px-6 sm:py-3">วันที่อัพเดต</th>
-              <th className="px-4 py-2 sm:px-6 sm:py-3">ประเภท</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-200">
-            {posts.map(post => (
-              <tr key={post.id} className="transition-colors duration-200">
-                <td className="px-4 py-2 sm:px-6 sm:py-3">
-                  <Link to={`/posts/${post.id}`} className="block">
-                    <div className="flex items-center">
-                      <div className="w-12 h-12 overflow-hidden rounded-full">
-                        <img src={`${post.image}`} alt={`${post.title} image`} className="object-cover w-full h-full" />
-                      </div>
-                    </div>
-                  </Link>
-                </td>
-                <td className="px-4 py-2 sm:px-6 sm:py-3 text-lg font-medium">
-                  <Link to={`/posts/${post.id}`} className="block">
-                    {post.title}
-                  </Link>
-                </td>
-                <td className="px-4 py-2 sm:px-6 sm:py-3">{post.author}</td>
-                <td className="px-4 py-2 sm:px-6 sm:py-3">{new Date(post.updated_at).toLocaleDateString()}</td>
-                <td className="px-4 py-2 sm:px-6 sm:py-3">{post.category}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+    <div className='pb-3'>
+      <p>โพสล่าสุด</p>
+      <br />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {posts.map(post => (
+           <Link to={`/posts/${post.id}`} className="block mt-4">
+          <div key={post.id} className="shadow-md rounded-lg overflow-hidden h-72">
+            <img src={post.image} alt={`${post.title} image`} className="w-full h-40 object-cover" />
+            <div className="p-4">
+              <h2 className="font-semibold text-lg">{post.title}</h2>
+              <p className="text-gray-600 text-sm mb-2">ผู้สร้าง: {post.author}</p>
+              <p className="text-gray-600 text-sm mb-2">วันที่อัพเดต: {new Date(post.updated_at).toLocaleDateString()}</p>
+              <p className="text-gray-600 text-sm">ประเภท: {post.category}</p>
+            </div>
+          </div>
+          </Link>
+        ))}
       </div>
     </div>
   );

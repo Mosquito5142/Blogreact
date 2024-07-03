@@ -35,6 +35,9 @@ export default function AdminpostList() {
 
   return (
     <div>
+      <div>
+        admin
+      </div>
       <div className="overflow-x-auto">
         <table className="table">
           <thead>

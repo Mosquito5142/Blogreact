@@ -18,9 +18,10 @@ export default {
           "neutral": "#3d4451",
           "base-100": "#ffffff",
           "info": "#3abff8",
-          "success": "#36d399",
+          "success": "#E6FFE6",
           "warning": "#fbbd23",
           "error": "#f87272",
+          "Green-200":"#bbf7d0",
         },
         dark: {
           "primary": "#793ef9",
@@ -29,9 +30,10 @@ export default {
           "neutral": "#2a2e37",
           "base-100": "#1f2937",
           "info": "#3abff8",
-          "success": "#36d399",
+          "success": "#343A40",
           "warning": "#fbbd23",
           "error": "#f87272",
+          "Green-200":"#4ade80",
         },
       }
     ],

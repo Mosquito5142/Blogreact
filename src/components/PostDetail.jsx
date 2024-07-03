@@ -49,7 +49,7 @@ export default function PostDetail() {
     <div className='py-3'>
       <h1 className='text-3xl py-7 font-bold'>{post.title}</h1>
       {post.image && 
-        <div className="flex justify-center mb-4 h-60">
+        <div className="flex justify-center mb-4 h-80">
           <img src={post.image} alt={`${post.title} image`} className="max-w-full h-auto" />
         </div>
       }
@@ -57,8 +57,6 @@ export default function PostDetail() {
       <p><strong>ผู้เขียน : </strong> {post.author}</p>
       <p><strong>วันที่เขียน : </strong> {new Date(post.created_at).toLocaleDateString()}</p>
       <p><strong>วันที่แก้ไข : </strong> {new Date(post.updated_at).toLocaleDateString()}</p>
-      <p><strong>ประเภท : </strong> {post.category}</p>
-      <p><strong>แท็ก : </strong> {post.tags}</p>
       <br/>
     </div>
   );

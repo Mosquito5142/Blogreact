@@ -10,6 +10,7 @@ import SearchResults from "./components/SearchResults";
 // Admin
 import AdminpostList from "./components/admin/AdminpostList"
 import EditPost from './components/admin/EditPost';
+import Login from "./components/admin/Login";
 
 export default function App() {
   const [results, setResults] = useState([]);
@@ -17,9 +18,9 @@ export default function App() {
 
   return (
     <Router>
+      <div className="container mx-auto">
       <Navbar setResults={setResults} setInput={setInput} />
       {input && <SearchResults results={results} input={input} />} {/* ซ่อน SearchResults เมื่อไม่มี input */}
-      <div className="container mx-auto">
         <Routes>
           <Route 
             path="/" 
@@ -34,6 +35,7 @@ export default function App() {
           <Route path="/addposts" element={<Addposts />} />
           <Route path="/admin" element={<AdminpostList />}/>
           <Route path="/editpost/:id" element={<EditPost />} />
+          <Route path="/login"  element={<Login />}    />
         </Routes>
       </div>
       <Footer />
