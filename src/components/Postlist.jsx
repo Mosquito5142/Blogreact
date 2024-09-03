@@ -6,7 +6,7 @@ export default function Postlist() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(import.meta.env.VITE_API + '/posts')
+    fetch('http://obgiftshop.onlinewebshop.net/post/posts.php')
       .then(res => res.json())
       .then(result => {
         setPosts(result);
