@@ -5,7 +5,7 @@ export default function Postlist() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetch('fetch(import.meta.env.VITE_API + '/posts')')
+    fetch(import.meta.env.VITE_API + '/posts')
       .then(res => res.json())
       .then(result => {
         setPosts(result);
